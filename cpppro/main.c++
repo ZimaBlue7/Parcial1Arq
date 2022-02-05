@@ -6,7 +6,7 @@
 
 using namespace std;
 
-unsigned short arrayfloat[16];
+unsigned static short arrayfloat[16];
 
 void print_bits16(const ushort x)
 {
@@ -41,9 +41,9 @@ void print_bits32(const float x)
 
 void floatToDecimal(unsigned short arrayfloat[])
 {
-    int arraySigno[1];
-    int arrayExpo[5];
-    int arrayManti[10];
+    unsigned static short arraySigno[1];
+    unsigned static short arrayExpo[5];
+    unsigned static short arrayManti[10];
 
     int operation = 0;
     int sesgo = 15;
@@ -54,22 +54,22 @@ void floatToDecimal(unsigned short arrayfloat[])
 
     arraySigno[0] = arrayfloat[15];
 
-    arrayExpo[1] = arrayfloat[14];
-    arrayExpo[2] = arrayfloat[13];
-    arrayExpo[3] = arrayfloat[12];
-    arrayExpo[4] = arrayfloat[11];
-    arrayExpo[5] = arrayfloat[10];
+    arrayExpo[0] = arrayfloat[14];
+    arrayExpo[1] = arrayfloat[13];
+    arrayExpo[2] = arrayfloat[12];
+    arrayExpo[3] = arrayfloat[11];
+    arrayExpo[4] = arrayfloat[10];
 
-    arrayManti[6] = arrayfloat[9];
-    arrayManti[7] = arrayfloat[8];
-    arrayManti[8] = arrayfloat[7];
-    arrayManti[9] = arrayfloat[6];
-    arrayManti[10] = arrayfloat[5];
-    arrayManti[11] = arrayfloat[4];
-    arrayManti[12] = arrayfloat[3];
-    arrayManti[13] = arrayfloat[2];
-    arrayManti[14] = arrayfloat[1];
-    arrayManti[15] = arrayfloat[0];
+    arrayManti[0] = arrayfloat[9];
+    arrayManti[1] = arrayfloat[8];
+    arrayManti[2] = arrayfloat[7];
+    arrayManti[3] = arrayfloat[6];
+    arrayManti[4] = arrayfloat[5];
+    arrayManti[5] = arrayfloat[4];
+    arrayManti[6] = arrayfloat[3];
+    arrayManti[7] = arrayfloat[2];
+    arrayManti[8] = arrayfloat[1];
+    arrayManti[9] = arrayfloat[0];
 
     if (arraySigno[0] == 1)
     {
@@ -80,11 +80,14 @@ void floatToDecimal(unsigned short arrayfloat[])
         sign = "";
     }
 
+    cout << "sign" << sign;
+
     for (int i = 0; i > 6; i++)
     {
         if (arrayExpo[i] == 1)
         {
             contador++;
+            cout << "contador: " << contador << "\n";
         }
     }
     int expos[contador];
@@ -102,9 +105,14 @@ void floatToDecimal(unsigned short arrayfloat[])
     for (int i = 0; i > contador; i++)
     {
         operation += pow(2, expos[i]);
+        cout << "\n "
+             << "operation: " << operation;
     }
 
     total = operation - sesgo;
+
+    cout << "\n "
+         << "total: " << total;
 
     for (int i = 9; i >= 0; i--)
     {
@@ -216,6 +224,8 @@ int main()
 
     float distanciaMedida = 0;
     float radio = 0.5f;
+    const ushort radio_compressed = float_to_half(radio);
+
     float perimetroRueda = 2 * 3.14159265f * radio;
     const ushort perimetro_compressed = float_to_half(perimetroRueda);
     float distanciaAlarma = 5000;
@@ -224,8 +234,11 @@ int main()
     float distanciaAlarma2 = 10000;
     const ushort alarma2_compressed = float_to_half(distanciaAlarma2);
 
+    print_bits16(radio_compressed);
+    floatToDecimal(arrayfloat);
+
     // int16 numerosGirosLlanta =0;
-    cout << "Perimetro rueda "
+    /* cout << "Perimetro rueda "
          << "\n";
     cout << "32 bits: ";
     print_bits32(perimetroRueda);
@@ -243,7 +256,7 @@ int main()
     cout << "32 bits: ";
     print_bits32(distanciaAlarma2);
     cout << "16 bits: ";
-    print_bits16(alarma2_compressed);
+    print_bits16(alarma2_compressed); */
     // floatToDecimal(arrayfloat);
     //  print_bits32(x_decompressed);
 

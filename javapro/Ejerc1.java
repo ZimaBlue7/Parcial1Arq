@@ -1,5 +1,8 @@
 package javapro;
 
+import java.math.*;
+//import javax.swing.text.StyledEditorKit.BoldAction;
+
 /**
  * Ejerc1
  */
@@ -9,11 +12,14 @@ package javapro;
 public class Ejerc1 {
 
     float distanciaMedida = 0;
+    double distanciaMedida2 = 0;
     float radio = 0.5f;
-    float perimetroRueda = 2 * 3.14159265f * radio;
+    double perimetroRueda = Math.floor((2 * 3.14159265f * radio) * 100 / 100);
+    float perimetroRueda2 = 2 * 3.14159265f * radio;
     float distanciaAlarma = 5000;
     float distanciaAlarma2 = 10000;
     int vueltas = 0;
+    Boolean alarma;
 
     public static void main(String[] args) {
 
@@ -29,10 +35,22 @@ public class Ejerc1 {
             distanciaMedida += perimetroRueda;
             vueltas++;
         }
-        System.out.println("Vueltas: " + vueltas);
-        System.out.println("Distancia Medida: " + distanciaMedida);
 
-        System.out.println("Diferencia: " + (distanciaMedida - distanciaAlarma));
+        // distanciaMedida2 = vueltas * perimetroRueda;
+        distanciaMedida2 = Math.floor((vueltas * perimetroRueda) * 100 / 100);
+
+        System.out.println("Vueltas: " + vueltas);
+        System.out.println("Distancia Medida: " + distanciaMedida2);
+        System.out.println("Diferencia: " + (distanciaMedida2 - distanciaAlarma));
+
+        if (distanciaAlarma == distanciaMedida) {
+            alarma = true;
+            System.out.println("Se activo la alarma: " + alarma);
+        } else {
+            alarma = false;
+            System.out.println("No se activo la alarma: " + alarma);
+        }
+
     }
 
     public void vueltas2() {
@@ -41,10 +59,20 @@ public class Ejerc1 {
             distanciaMedida += perimetroRueda;
             vueltas++;
         }
-        System.out.println("Vueltas: " + vueltas);
-        System.out.println("Distancia Medida: " + distanciaMedida);
 
-        System.out.println("Diferencia: " + (distanciaMedida - distanciaAlarma2));
+        distanciaMedida2 = Math.floor((vueltas * perimetroRueda) * 100 / 100);
+
+        System.out.println("Vueltas: " + vueltas);
+        System.out.println("Distancia Medida: " + distanciaMedida2);
+        System.out.println("Diferencia: " + (distanciaMedida2 - distanciaAlarma2));
+
+        if (distanciaAlarma == distanciaMedida) {
+            alarma = true;
+            System.out.println("Se activo la alarma: " + alarma);
+        } else {
+            alarma = false;
+            System.out.println("No se activo la alarma: " + alarma);
+        }
     }
 
 }
