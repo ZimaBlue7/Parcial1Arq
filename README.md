@@ -13,4 +13,5 @@ Carpetas:
    terminar el proceso de los 16 bits en cpp.
  * float16. Implementación de clase encontrada en internet, se intentó usar en Ejerci1 pero no dieron resultados coherentes.
  
+ * Tablas completas del 40% parcial: https://docs.google.com/spreadsheets/d/1vEhT_78gtBN6gZkt_Wku1KdBEzcmAOCjOSbfRg5s6Ug/edit#gid=0
  
